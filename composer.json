@@ -1,0 +1,23 @@
+{
+    "name": "chajr/uploader",
+    "description": "Symphony 2 file uploader",
+    "authors": [
+        {
+            "name": "chajr",
+            "email": "chajr@bluetree.pl"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/framework-standard-edition": "2.5.*"
+    },
+    "require-dev": {},
+    "autoload": {
+        "classmap": [
+            "lib"
+        ]
+    },
+    "config": {
+        "vendor-dir": "bin"
+    }
+}
