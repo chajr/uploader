@@ -11,17 +11,14 @@
         <link rel="stylesheet" href="/skin/css/style.css"/>
     </head>
     <body>
-        <ul class="nav nav-pills">
-            <li class="active">
-                <a href="/">Upload files</a>
-            </li>
-            <li>
-                <a href="/files-list">
-                    Uploaded files list
-                    <span class="badge">14</span>
-                </a>
-            </li>
-        </ul>
+        <div class="btn-group">
+            <a href="/" class="btn btn-default active">Upload files</a>
+            <a href="/files-list" class="btn btn-default">
+                Uploaded files list
+                <span class="badge">14</span>
+            </a>
+        </div>
+
         <?php echo $dropzone;?>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

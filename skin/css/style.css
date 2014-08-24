@@ -1,12 +1,15 @@
-#dropzone-form{
+#dropzoneForm{
     width: 80%;
     margin: 20px auto;
     cursor: cell;
 }
-#dropzone-form div{
+#dropzoneForm div{
     cursor: cell;
 }
-#dropzone-form span{
+#dropzoneForm .dz-filename span, #dropzoneForm .dz-error-message span{
+    font-size: 12px;
+}
+#dropzoneForm span{
     font-size: 25px;
     text-align: center;
     content: 'Przesuń pliki tutaj aby załadować na serwer';
@@ -15,7 +18,13 @@
     border: 2px dashed #ccc;
     background-color: #333;
 }
-ul.nav{
+.btn-group{
     width: 80%;
     margin: 20px auto 50px;
+    padding-bottom: 20px;
+    display: block;
+}
+pre{
+    width:80%;
+    margin: 5px auto;
 }
