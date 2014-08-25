@@ -5,7 +5,7 @@
  * @package     lib
  * @author      Michał Adamiak    <chajr@bluetree.pl>
  * @copyright   chajr/bluetree
- * @version     0.1.0
+ * @version     0.2.0
  */
 namespace lib;
 
@@ -14,7 +14,7 @@ use Symfony\Component\Templating\TemplateNameParser;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndexController
+class IndexController extends CommonController
 {
     /**
      * display main page
@@ -29,8 +29,12 @@ class IndexController
         $dropzone           = new PhpEngine(new TemplateNameParser(), $dropzoneTemplate);
 
         $response = $main->render('index', [
-            'dropzone' => $dropzone->render('dropzone'),
+            'header'    => $this->createContent('header'),
+            'menu'      => $this->createContent('menu'),
+            'dropzone'  => $dropzone->render('dropzone'),
+            'footer'    => $this->createContent('footer'),
         ]);
+
         return new Response($response);
     }
 }
