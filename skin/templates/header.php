@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/skin/css/elusive-webfont-ie7.css"/>
         <link rel="stylesheet" href="/skin/css/dropzone.css"/>
         <link rel="stylesheet" href="/skin/css/style.css"/>
+        <link rel="stylesheet" href="/skin/css/mobile.css"/>
     </head>
     <body>
 

@@ -33,17 +33,16 @@ class FileHandlerController
      */
     public function removeAction()
     {
+        $fileSystem = new Filesystem();
         $file       = Initializer::$request->get('file');
         $fullPath   = MEDIA_PATH . '/' . $file;
-        $exists     = file_exists($fullPath);
+        $exists     = $fileSystem->exists($fullPath);
         $message    = [
             'status'    => 'success',
             'message'   => ''
         ];
 
         if ($file && $exists) {
-            $fileSystem = new Filesystem();
-
             try {
                 $fileSystem->remove([$fullPath]);
             } catch (IOException $e) {
@@ -56,5 +55,36 @@ class FileHandlerController
         }
 
         return new Response(json_encode($message));
+    }
+
+    /**
+     * handle upload action for single file
+     * 
+     * @return Response
+     */
+    public function uploadAction()
+    {
+        $fileSystem = new Filesystem();
+        /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
+        $file       = Initializer::$request->files->get('file');
+        $path       = MEDIA_PATH . '/' . $file->getClientOriginalName();
+
+        if ($file->getError()) {
+            return new Response($file->getErrorMessage(), 500);
+        }
+
+        if ($fileSystem->exists($path)) {
+            return new Response('File already exists', 500);
+        }
+
+        try {
+            $fileSystem->copy((string)$file, $path);
+        } catch (IOException $e) {
+            return new Response(var_export($e, true), 500);
+        } catch (Exception $e) {
+            return new Response(var_export($e, true), 500);
+        }
+
+        return new Response('File was uploaded');
     }
 }
