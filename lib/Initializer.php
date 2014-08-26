@@ -5,7 +5,7 @@
  * @package     lib
  * @author      Michał Adamiak    <chajr@bluetree.pl>
  * @copyright   chajr/bluetree
- * @version     0.2.0
+ * @version     0.3.0
  */
 namespace lib;
 
@@ -40,8 +40,13 @@ class Initializer
         ],
         [
             'name'          => 'file_upload',
-            'route'         => '/file_upload',
-            'controller'    => 'FileUpload'
+            'route'         => '/file_handler',
+            'controller'    => 'FileHandler'
+        ],
+        [
+            'name'          => 'file_handler',
+            'route'         => '/file_handler/{action}',
+            'controller'    => 'FileHandler',
         ],
     ];
 

@@ -5,7 +5,7 @@
  * @package     lib
  * @author      Michał Adamiak    <chajr@bluetree.pl>
  * @copyright   chajr/bluetree
- * @version     0.2.0
+ * @version     0.3.0
  */
 namespace lib;
 
@@ -28,9 +28,15 @@ class IndexController extends CommonController
         $main               = new PhpEngine(new TemplateNameParser(), $mainTemplate);
         $dropzone           = new PhpEngine(new TemplateNameParser(), $dropzoneTemplate);
 
+        $pages = [
+            'upload'    => 'active',
+            'list'      => '',
+            'fileCount' => $this->countFiles(),
+        ];
+
         $response = $main->render('index', [
             'header'    => $this->createContent('header'),
-            'menu'      => $this->createContent('menu'),
+            'menu'      => $this->createContent('menu', $pages),
             'dropzone'  => $dropzone->render('dropzone'),
             'footer'    => $this->createContent('footer'),
         ]);
