@@ -5,13 +5,14 @@
  * @package     lib
  * @author      Michał Adamiak    <chajr@bluetree.pl>
  * @copyright   chajr/bluetree
- * @version     0.2.0
+ * @version     0.3.0
  */
 namespace lib;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOException;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Exception;
 
 class FileHandlerController
@@ -86,5 +87,29 @@ class FileHandlerController
         }
 
         return new Response('File was uploaded');
+    }
+
+    /**
+     * return file to download
+     * 
+     * @return Response
+     */
+    public function downloadAction()
+    {
+        $fileSystem = new Filesystem();
+        $path       = 'media/' . Initializer::$request->get('file');
+
+        if (!$fileSystem->exists($path)) {
+            return new Response('File not exists', 500);
+        }
+
+        $response       = new Response(file_get_contents($path));
+        $description    = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            Initializer::$request->get('file')
+        );
+
+        $response->headers->set('Content-Disposition', $description);
+        return $response;
     }
 }

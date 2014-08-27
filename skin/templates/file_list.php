@@ -36,10 +36,12 @@
                 <td><?php echo $file['size'];?></td>
                 <td><?php echo $file['creation'];?></td>
                 <td data-path="<?php echo $file['name'];?>">
-                    <button type="button" class="btn btn-primary download">
+                    <a class="btn btn-primary download"
+                       href="/file_handler/download?file=<?php echo $file['encoded'];?>"
+                       rel="nofollow">
                         <i class="icon-download"></i>
                         Download
-                    </button>
+                    </a>
 
                     <button type="button" class="btn btn-danger remove-file"
                             data-target="modal_remove"

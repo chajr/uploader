@@ -5,7 +5,7 @@
  * @package     lib
  * @author      Michał Adamiak    <chajr@bluetree.pl>
  * @copyright   chajr/bluetree
- * @version     0.2.0
+ * @version     0.3.0
  */
 namespace lib;
 
@@ -70,6 +70,7 @@ class FileListController extends CommonController
                     'name'      => $element->getFilename(),
                     'size'      => $this->fileSizeFormat($element->getSize()),
                     'creation'  => strftime('%d-%m-%Y - %H:%M:%S', $element->getMTime()),
+                    'encoded'   => urlencode($element->getFilename()),
                 ];
             }
         }
