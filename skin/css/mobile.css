@@ -1,11 +1,33 @@
 @media only screen and ( max-width: 880px )
 {
+    td a.btn, td button.btn{
+        width:100%;
+        margin-bottom: 10px;
+    }
 }
 @media only screen and ( max-width: 600px )
 {
 }
 @media only screen and ( max-width: 575px )
 {
+    tr td:first-child, tr th:first-child{
+        display:none;
+    }
+    .btn{
+        width: 80%;
+        font-size: 12px;
+        margin: 15px auto!important;
+        float:none!important;
+        display: block;
+        line-height: 30px;
+    }
+    .btn-group{
+        padding-bottom: 0;
+        margin-bottom: 15px;
+    }
+    #file_list{
+        width: 95%;
+    }
 }
 @media only screen and ( max-width: 540px )
 {
@@ -13,15 +35,19 @@
 }
 @media only screen and ( max-width: 500px )
 {
-    
+    .dropzone .dz-default.dz-message{
+        display:none;
+    }
 }
 @media only screen and ( max-width: 480px )
 {
-    .btn{
-        width: 80%;
-        font-size: 12px;
-    }
     .dropzone .dz-default.dz-message{
         display:none;
+    }
+    td a.btn i, td button.btn i{
+        display: none;
+    }
+    #file_list{
+        width: 100%;
     }
 }
